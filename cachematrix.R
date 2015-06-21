@@ -34,14 +34,14 @@ makeCacheMatrix <- function(x = matrix()) {
 ## This function returns the inverse of the matrix passed to it
 
 cacheSolve <- function(x, ...) {
-    funcs <- makeCacheMatrix(x,...)
-    inv <- funcs$getinverse()
+    
+    inv <- x$getinverse()
     if(!is.null(inv))   {
         print("returning cached data")
         return(inv)
     }
-    matrix <- funcs$get()
+    matrix <- x$get()
     inv <- solve(matrix,...)
-    funcs$setinverse(inv)
+    x$setinverse(inv)
     return(inv)
 }
